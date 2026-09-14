@@ -1,38 +1,42 @@
 # Agentic AI Portfolio
 
-Project writeups from the **Johns Hopkins University Agentic AI** program (2026). These describe systems I designed and built during the program — architecture, approach, and key learnings.
+Architecture-focused case studies from the **Johns Hopkins University Agentic AI program (2026)**. The portfolio covers multi-agent orchestration, tool-using agents, retrieval-augmented generation (RAG), evaluation, responsible AI, and human oversight.
 
-> **Note:** This repository contains descriptions and architectural writeups only. The implementation code is not published, as the program used non-distributable course materials. The designs and learnings below are my own.
+> **Portfolio scope:** This repository publishes original architectural writeups and learning reflections only. Course implementation code, datasets, prompts, and other non-distributable materials are not included.
 
-🔗 **Verified portfolio:** [mygreatlearning.com/eportfolio/banketeshvar-narayan](https://www.mygreatlearning.com/eportfolio/banketeshvar-narayan)
+## Projects
 
----
+| Project | Focus | Core technologies and patterns |
+| --- | --- | --- |
+| [Multi-Agent Mortgage Underwriting System](projects/mortgage-underwriting/) | Coordinated specialist analysis with human review | LangGraph, hierarchical multi-agent workflow, ReAct, RAG, HITL |
+| [Autonomous Financial Research Analyst](projects/financial-research-analyst/) | Tool selection and evidence-based financial research | LangGraph, LangChain, tool calling, sentiment analysis |
+| [DualLens Analytics](projects/duallens-rag-evaluation/) | Multi-source RAG and systematic response evaluation | ChromaDB, embeddings, RAG, LLM-as-Judge |
 
-## 1. Multi-Agent Mortgage Underwriting System
+## Portfolio themes
 
-An AI-driven underwriting system using a **hierarchical multi-agent architecture** to accelerate and standardize loan decisions.
+- **Orchestration:** model agent responsibilities, shared state, routing, and completion conditions explicitly.
+- **Grounding:** use retrieval and external tools to support answers with relevant evidence.
+- **Evaluation:** assess groundedness and relevance instead of relying only on subjective inspection.
+- **Responsible AI:** include privacy, bias, auditability, and human-review controls in the design.
+- **Engineering discipline:** treat failure handling, observability, and validation as part of the architecture.
 
-- **Architecture:** A Supervisor Agent coordinating four specialist agents — Credit Analyst, Income Analyst, Property Analyst, and Compliance Officer — each following the ReAct (Reasoning + Acting) pattern.
-- **Capabilities:** RAG-based policy retrieval for compliance checking, PII redaction, bias detection, audit trails, and Human-in-the-Loop review for edge cases.
-- **Stack:** LangGraph, RAG, ChromaDB, Multi-Agent Systems, HITL.
-- **Key learning:** How state machines manage complex shared state across multiple agents, and how to translate a business process that traditionally takes 3–5 days into a consistent, auditable, automated agentic workflow.
+## Program verification
 
-## 2. Autonomous Financial Research Analyst
+- [Verified Great Learning e-portfolio](https://www.mygreatlearning.com/eportfolio/banketeshvar-narayan)
 
-A smart financial agent that analyzes AI companies for investors — pulling real-time stock prices, checking multi-year performance trends, scanning news for sentiment, and mining analyst reports via RAG to produce sourced Buy/Hold/Sell recommendations.
+## Repository structure
 
-- **Architecture:** A LangGraph state machine with an Agent Node, Tool Node, and conditional routing that autonomously orchestrates four tools without explicit step-by-step user instruction.
-- **Stack:** LangGraph, LangChain, tool calling, sentiment analysis, prompt engineering.
-- **Key learning:** The four core agent design principles — proactiveness, autonomy, reactivity, and actuators — and how behavioral constraints and goal definitions shape agent reliability. This shifted my thinking from "prompting an LLM" to "designing an agent with a charter."
+```text
+agentic-ai-portfolio/
+├── README.md
+└── projects/
+    ├── mortgage-underwriting/
+    ├── financial-research-analyst/
+    └── duallens-rag-evaluation/
+```
 
-## 3. DualLens Analytics — RAG Evaluation Pipeline
+Each case study follows a consistent structure: context, objectives, architecture, workflow, responsible-AI considerations, evaluation, engineering lessons, and repository boundaries.
 
-A RAG system that integrates quantitative financial data with qualitative insights from organizations' AI initiatives, giving investors a combined performance-and-readiness view.
+## Important clarification
 
-- **Architecture:** End-to-end pipeline — real-time data ingestion, PDF chunking, embeddings stored in ChromaDB, and synthesis into investment recommendations, with quality measured via LLM-as-Judge (groundedness and relevance).
-- **Stack:** RAG, ChromaDB, embeddings, OpenAI, evaluation metrics.
-- **Key learning:** How multi-source data integration produces richer, more defensible decisions than any single source, and how to evaluate RAG quality systematically rather than by intuition.
-
----
-
-*These projects reflect hands-on work in agentic system design, multi-agent orchestration, and RAG — the same principles I apply to AI-enabled engineering at enterprise scale.*
+These case studies explain educational project designs. They are not production financial, lending, compliance, or investment systems, and their outputs must not be interpreted as professional financial advice or automated approval authority.
